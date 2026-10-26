@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: creator-ai-studio
+    runtime: docker
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CLAUDE_API_KEY
+        sync: false

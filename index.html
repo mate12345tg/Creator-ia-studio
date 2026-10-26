@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090d0b"><title>Creator AI Studio</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand"><div class="logo">C</div><div><b>CREATOR</b><small>AI STUDIO</small></div></div>
+    <p class="eyebrow">WORKSPACE</p>
+    <button class="nav active" data-tab="niches"><span>⌕</span> Buscador de nichos</button>
+    <button class="nav" data-tab="shorts"><span>▣</span> Shorts con IA</button>
+    <button class="nav" data-tab="clips"><span>◖</span> Cortador de clips</button>
+    <div class="sidebottom"><div class="statusdot"></div><span id="status">Comprobando servidor…</span></div>
+  </aside>
+  <main>
+    <header><div><p class="eyebrow">CREATOR WORKSPACE / 01</p><h1 id="pageTitle">Buscador de nichos</h1></div><span class="pill">● SISTEMA IA</span></header>
+    <section class="panel tab active" id="niches">
+      <div class="intro"><div><p class="eyebrow green">DESCUBRIMIENTO</p><h2>Encuentra tu próximo nicho.</h2><p>Genera ideas de contenido y formatos que puedas convertir en series.</p></div><div class="orb">⌕</div></div>
+      <form id="nicheForm" class="formgrid">
+        <label>Tema o interés<input name="topic" value="gaming" placeholder="Ej. fútbol, tecnología, gaming" required></label>
+        <label>Plataforma<select name="platform"><option>YouTube Shorts</option><option>TikTok</option><option>Instagram Reels</option></select></label>
+        <label>Idioma<select name="language"><option value="Spanish">Español</option><option value="English">Inglés</option><option value="Portuguese">Portugués</option></select></label>
+        <button class="primary" type="submit">✦ Buscar oportunidades</button>
+      </form>
+      <div id="nicheResults" class="results muted">Tus ideas aparecerán aquí. Los resultados generados no son datos de tendencias en vivo.</div>
+    </section>
+    <section class="panel tab" id="shorts">
+      <div class="intro"><div><p class="eyebrow green">CREACIÓN DE CONTENIDO</p><h2>De idea a Short.</h2><p>Prepara el guion y crea subtítulos con los tiempos exactos que ya trae tu voz.</p></div><div class="orb">▣</div></div>
+      <div class="notice"><b>Subtítulos sin Whisper</b><span>Usa palabras con tiempos en segundos (JSON) para mantener la sincronización. Esta versión prepara el SRT; la generación de voz/video requiere conectar un proveedor de IA.</span></div>
+      <div class="formgrid">
+        <label class="wide">Idea del Short<textarea id="shortIdea" rows="2" placeholder="Ej. 3 errores que arruinan tu final de partida en Fortnite"></textarea></label>
+        <label class="wide">Guion / voz en off<textarea id="shortScript" rows="4" placeholder="Pega aquí el guion o texto de la voz…"></textarea></label>
+        <label class="wide">Tiempos de palabras en JSON<textarea id="wordTimes" rows="5" placeholder='[{"word":"Tres","start":0.0,"end":0.35},{"word":"errores","start":0.36,"end":0.8}]'></textarea></label>
+        <button id="makeSrt" class="primary">✦ Crear subtítulos SRT</button>
+        <button id="copyScript" class="secondary">Copiar guion</button>
+      </div>
+      <div id="srtResult" class="results muted">El archivo SRT se generará a partir de los tiempos suministrados.</div>
+    </section>
+    <section class="panel tab" id="clips">
+      <div class="intro"><div><p class="eyebrow green">EDICIÓN AUTOMÁTICA</p><h2>Encuentra los mejores momentos.</h2><p>Detecta energía en el audio y exporta clips verticales sin subtítulos.</p></div><div class="orb">◖</div></div>
+      <div class="notice"><b>Sin Whisper ni instalación en Android</b><span>El procesamiento de video se ejecuta en el servidor. Los clips se eligen por volumen; Claude es opcional para aportar contexto del guion.</span></div>
+      <form id="clipForm" class="formgrid">
+        <label class="wide">Archivo de video<input name="video" type="file" accept="video/*" required></label>
+        <label>Duración por clip<select name="clipDuration"><option value="15">15 segundos</option><option value="30" selected>30 segundos</option><option value="45">45 segundos</option><option value="60">60 segundos</option><option value="90">90 segundos</option></select></label>
+        <label>Cuántos clips<select name="count"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select></label>
+        <label class="wide">Guion de Claude (opcional)<textarea name="script" rows="3" placeholder="Pega el guion o contexto para ayudar a priorizar los momentos…"></textarea></label>
+        <label class="check wide"><input type="checkbox" name="useClaude" value="true"> Usar Claude si la clave está configurada</label>
+        <button class="primary" type="submit">◉ Analizar y cortar video</button>
+      </form>
+      <div id="clipResults" class="results muted">Sube un video para empezar. Al terminar verás el aviso y los enlaces de descarga.</div>
+    </section>
+    <footer>CREATOR AI STUDIO <span>•</span> Herramientas para creadores</footer>
+  </main>
+</div>
+<div id="toast" role="status"></div>
+<script src="/app.js"></script>
+</body></html>
